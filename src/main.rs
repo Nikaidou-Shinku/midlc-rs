@@ -30,8 +30,6 @@ fn run(args: Cli) -> Result<()> {
 
   let ast = parse(&input)?;
 
-  println!("{ast:#?}");
-
   {
     let mut output_file = File::create(args.output)?;
     write!(output_file, "{ast:#?}")?;

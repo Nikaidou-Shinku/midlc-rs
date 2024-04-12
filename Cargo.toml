@@ -2,6 +2,13 @@
 name = "midlc-rs"
 version = "0.1.0"
 edition = "2021"
+description = "A simple MIDL compiler, made for coursework"
+authors = ["yurzhang <yurzhang.oi@gmail.com>"]
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
 
 [dependencies]
 anyhow = "1.0.82"

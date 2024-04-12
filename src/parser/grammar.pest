@@ -17,34 +17,34 @@ CHAR                = @{ "'" ~ (ESCAPE_SEQUENCE | (!("\\" | "'") ~ ANY)) ~ "'" }
 STRING              = @{ "\"" ~ (ESCAPE_SEQUENCE | (!("\\" | "\"") ~ ANY))* ~ "\"" }
 BOOLEAN             =  { "TRUE" | "true" | "FALSE" | "false" }
 
-specification     = { definition+ }
-definition        = { (type_decl | module) ~ ";" }
-module            = { "module" ~ ID ~ "{" ~ definition+ ~ "}" }
-type_decl         = { struct_type | ("struct" ~ ID) }
-struct_type       = { "struct" ~ ID ~ "{" ~ member* ~ "}" }
-member            = { type_spec ~ declarators ~ ";" }
-type_spec         = { base_type_spec | struct_type | scoped_name }
+specification = { definition+ }
+definition    = { (type_decl | module) ~ ";" }
+module        = { "module" ~ ID ~ "{" ~ definition+ ~ "}" }
+type_decl     = { struct_type | ("struct" ~ ID) }
+struct_type   = { "struct" ~ ID ~ "{" ~ member* ~ "}" }
+member        = { type_spec ~ declarators ~ ";" }
+type_spec     = { base_type_spec | struct_type | scoped_name }
 // TODO: check if this is atomic
 scoped_name       = @{ "::"? ~ ID ~ ("::" ~ ID)* }
-base_type_spec    = { "boolean" | "char" | "string" | floating_pt_type | integer_type }
-floating_pt_type  = { ("long" ~ "double") | "double" | "float" }
-integer_type      = { signed_int | unsigned_int }
-signed_int        = {
+base_type_spec    =  { "boolean" | "char" | "string" | floating_pt_type | integer_type }
+floating_pt_type  =  { ("long" ~ "double") | "double" | "float" }
+integer_type      =  { signed_int | unsigned_int }
+signed_int        =  {
     (("long" ~ "long") | "int64")
   | ("long" | "int32")
   | ("short" | "int16")
   | "int8"
 }
-unsigned_int      = {
+unsigned_int      =  {
     (("unsigned" ~ "long" ~ "long") | "uint64")
   | (("unsigned" ~ "long") | "uint32")
   | (("unsigned" ~ "short") | "uint16")
   | "uint8"
 }
-declarators       = { declarator ~ ("," ~ declarator)* }
-declarator        = { array_declarator | simple_declarator }
-simple_declarator = { ID ~ ("=" ~ or_expr)? }
-array_declarator  = { ID ~ "[" ~ or_expr ~ "]" ~ ("=" ~ exp_list)? }
+declarators       =  { declarator ~ ("," ~ declarator)* }
+declarator        =  { array_declarator | simple_declarator }
+simple_declarator =  { ID ~ ("=" ~ or_expr)? }
+array_declarator  =  { ID ~ "[" ~ or_expr ~ "]" ~ ("=" ~ exp_list)? }
 // FIXME: maybe replace `[]` with `{}`?
 exp_list = { "{" ~ or_expr ~ ("," ~ or_expr)* ~ "}" }
 // FIXME: these are totally wrong, replace them with pratt parsing
