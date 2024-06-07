@@ -1,0 +1,33 @@
+MidlAst(
+    [
+        Module(
+            MidlModule {
+                identifier: "space",
+                members: [
+                    Struct(
+                        MidlStruct {
+                            identifier: "B",
+                            members: [],
+                        },
+                    ),
+                    Struct(
+                        MidlStruct {
+                            identifier: "A",
+                            members: [
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "short",
+                                        identifier: "i1",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+)

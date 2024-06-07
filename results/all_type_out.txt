@@ -1,0 +1,201 @@
+MidlAst(
+    [
+        Module(
+            MidlModule {
+                identifier: "space",
+                members: [
+                    Struct(
+                        MidlStruct {
+                            identifier: "A",
+                            members: [
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "short",
+                                        identifier: "i1",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "int16",
+                                        identifier: "i2",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "long",
+                                        identifier: "i3",
+                                        initial_value: Some(
+                                            "100",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "int32",
+                                        identifier: "i4",
+                                        initial_value: Some(
+                                            "100",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "long long",
+                                        identifier: "i5",
+                                        initial_value: Some(
+                                            "1000",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "int64",
+                                        identifier: "i6",
+                                        initial_value: Some(
+                                            "1000",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "unsigned short",
+                                        identifier: "i7",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "uint16",
+                                        identifier: "i8",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "unsigned long",
+                                        identifier: "i9",
+                                        initial_value: Some(
+                                            "100",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "uint32",
+                                        identifier: "i10",
+                                        initial_value: Some(
+                                            "100",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "unsigned long long",
+                                        identifier: "i11",
+                                        initial_value: Some(
+                                            "1000",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "uint64",
+                                        identifier: "i12",
+                                        initial_value: Some(
+                                            "1000",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "char",
+                                        identifier: "c0",
+                                        initial_value: Some(
+                                            "'a'",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "string",
+                                        identifier: "c1",
+                                        initial_value: Some(
+                                            "\"abc\"",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "boolean",
+                                        identifier: "c2",
+                                        initial_value: Some(
+                                            "true",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "float",
+                                        identifier: "c3",
+                                        initial_value: Some(
+                                            "10.901f",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "double",
+                                        identifier: "c4",
+                                        initial_value: Some(
+                                            "23.234d",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "long double",
+                                        identifier: "c5",
+                                        initial_value: Some(
+                                            "12.23456432235d",
+                                        ),
+                                    },
+                                ),
+                                Array(
+                                    MidlStructArrayMember {
+                                        type: "short",
+                                        identifier: "arr",
+                                        length: "10",
+                                        initial_value: Some(
+                                            [
+                                                "0",
+                                                "1",
+                                                "2",
+                                                "3",
+                                                "4",
+                                                "5",
+                                                "6",
+                                                "7",
+                                                "8",
+                                                "9",
+                                            ],
+                                        ),
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+)

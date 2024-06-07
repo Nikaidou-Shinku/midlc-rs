@@ -1,0 +1,59 @@
+MidlAst(
+    [
+        Module(
+            MidlModule {
+                identifier: "space",
+                members: [
+                    Struct(
+                        MidlStruct {
+                            identifier: "A",
+                            members: [
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "short",
+                                        identifier: "i1",
+                                        initial_value: Some(
+                                            "10",
+                                        ),
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                    Struct(
+                        MidlStruct {
+                            identifier: "B",
+                            members: [
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "long",
+                                        identifier: "i2",
+                                        initial_value: Some(
+                                            "100",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "long",
+                                        identifier: "foo",
+                                        initial_value: Some(
+                                            "400",
+                                        ),
+                                    },
+                                ),
+                                Simple(
+                                    MidlStructSimpleMember {
+                                        type: "A",
+                                        identifier: "i3",
+                                        initial_value: None,
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+)

@@ -1,0 +1,20 @@
+MidlAst(
+    [
+        Struct(
+            MidlStruct {
+                identifier: "A",
+                members: [
+                    Simple(
+                        MidlStructSimpleMember {
+                            type: "short",
+                            identifier: "i1",
+                            initial_value: Some(
+                                "10",
+                            ),
+                        },
+                    ),
+                ],
+            },
+        ),
+    ],
+)
