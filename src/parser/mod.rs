@@ -4,7 +4,7 @@ use anyhow::{bail, Result};
 use pest::Parser;
 use pest_derive::Parser;
 
-use ast::MidlAst;
+pub use ast::*;
 
 #[derive(Parser)]
 #[grammar = "parser/grammar.pest"]

@@ -1,3 +1,4 @@
 /target
 /SyntaxOut.txt
-/README.pdf
+/*.pdf
+/result.hxx

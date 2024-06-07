@@ -1,4 +1,6 @@
+mod analyze;
 mod cli;
+mod codegen;
 mod parser;
 
 use std::{
@@ -6,10 +8,12 @@ use std::{
   io::{Read, Write},
 };
 
-use anyhow::Result;
+use anyhow::{bail, Result};
 use clap::Parser;
 
+use analyze::analyze;
 use cli::Cli;
+use codegen::codegen;
 use parser::parse;
 
 fn main() {
@@ -30,9 +34,15 @@ fn run(args: Cli) -> Result<()> {
 
   let ast = parse(&input)?;
 
+  if let Err(error) = analyze(&ast) {
+    bail!(error);
+  }
+
+  let result = codegen(&ast);
+
   {
     let mut output_file = File::create(args.output)?;
-    write!(output_file, "{ast:#?}")?;
+    writeln!(output_file, "{result}")?;
   }
 
   Ok(())

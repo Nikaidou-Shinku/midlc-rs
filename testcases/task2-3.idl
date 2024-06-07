@@ -1,0 +1,9 @@
+module space {
+  struct A {
+    short a;
+  };
+
+  struct A {
+    short a;
+  };
+};

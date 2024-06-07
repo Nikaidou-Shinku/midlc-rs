@@ -9,6 +9,6 @@ pub struct Cli {
   pub input: PathBuf,
 
   /// Place the output into <OUTPUT>
-  #[arg(short, default_value = "SyntaxOut.txt")]
+  #[arg(short, default_value = "result.hxx")]
   pub output: PathBuf,
 }

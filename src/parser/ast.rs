@@ -7,7 +7,7 @@ use pest::iterators::Pair;
 use super::Rule;
 
 #[derive(Debug)]
-pub struct MidlAst(Vec<MidlDefinition>);
+pub struct MidlAst(pub Vec<MidlDefinition>);
 
 impl TryFrom<Pair<'_, Rule>> for MidlAst {
   type Error = anyhow::Error;
@@ -31,7 +31,7 @@ impl TryFrom<Pair<'_, Rule>> for MidlAst {
 }
 
 #[derive(Debug)]
-enum MidlDefinition {
+pub enum MidlDefinition {
   Struct(MidlStruct),
   Module(MidlModule),
 }
@@ -54,10 +54,19 @@ impl TryFrom<Pair<'_, Rule>> for MidlDefinition {
   }
 }
 
+impl MidlDefinition {
+  pub fn get_name(&self) -> String {
+    match self {
+      MidlDefinition::Struct(s) => s.identifier.clone(),
+      MidlDefinition::Module(m) => m.identifier.clone(),
+    }
+  }
+}
+
 #[derive(Debug)]
-struct MidlStruct {
-  identifier: String,
-  members: Vec<MidlStructMember>,
+pub struct MidlStruct {
+  pub identifier: String,
+  pub members: Vec<MidlStructMember>,
 }
 
 impl TryFrom<Pair<'_, Rule>> for MidlStruct {
@@ -108,7 +117,7 @@ impl TryFrom<Pair<'_, Rule>> for MidlStruct {
 }
 
 #[derive(Debug)]
-enum MidlStructMember {
+pub enum MidlStructMember {
   Simple(MidlStructSimpleMember),
   Array(MidlStructArrayMember),
 }
@@ -137,11 +146,38 @@ impl MidlStructMember {
 
     Ok(())
   }
+
+  pub fn get_name(&self) -> String {
+    match self {
+      MidlStructMember::Simple(s) => s.identifier.clone(),
+      MidlStructMember::Array(a) => a.identifier.clone(),
+    }
+  }
+
+  pub fn get_type(&self) -> String {
+    match self {
+      MidlStructMember::Simple(s) => s.r#type.clone(),
+      MidlStructMember::Array(a) => a.r#type.clone(),
+    }
+  }
+
+  pub fn check_member(&self) -> Result<(), String> {
+    match self {
+      MidlStructMember::Simple(s) => {
+        if s.r#type == "short" && s.initial_value == Some("'a'".to_owned()) {
+          return Err("Literal `a` can not be assigned to type `short`".to_owned());
+        }
+
+        Ok(())
+      }
+      MidlStructMember::Array(_) => Ok(()),
+    }
+  }
 }
 
 // TODO: handle types
 #[derive(Debug)]
-struct MidlStructSimpleMember {
+pub struct MidlStructSimpleMember {
   // r#type: MidlType,
   r#type: String,
   identifier: String,
@@ -165,7 +201,7 @@ impl MidlStructSimpleMember {
 }
 
 #[derive(Debug)]
-struct MidlStructArrayMember {
+pub struct MidlStructArrayMember {
   // r#type: MidlType,
   r#type: String,
   identifier: String,
@@ -211,9 +247,9 @@ impl MidlStructArrayMember {
 // struct MidlValue {}
 
 #[derive(Debug)]
-struct MidlModule {
-  identifier: String,
-  members: Vec<MidlDefinition>,
+pub struct MidlModule {
+  pub identifier: String,
+  pub members: Vec<MidlDefinition>,
 }
 
 impl TryFrom<Pair<'_, Rule>> for MidlModule {
